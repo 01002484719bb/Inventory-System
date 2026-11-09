@@ -1,6 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout.jsx";
-import IntroCarModel from "./components/IntroCarModel.jsx";
+import CinematicIntro from "./components/CinematicIntro.jsx";
 import Home from "./pages/Home.jsx";
 import Inventory from "./pages/Inventory.jsx";
 import CarDetails from "./pages/CarDetails.jsx";
@@ -15,7 +15,7 @@ import { InventoryProvider } from "./InventoryStore.jsx";
 export default function App() {
   return (
     <>
-        <IntroCarModel />
+      <CinematicIntro />
       <InventoryProvider>
         <Routes>
           <Route element={<Layout />}>

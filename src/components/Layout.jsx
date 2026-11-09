@@ -16,7 +16,6 @@ export default function Layout() {
   const { pathname } = useLocation();
   const { favorites, compare, initialStorageError } = useInventoryStore();
   const [storageError, setStorageError] = useState(initialStorageError);
-  const [showIntro, setShowIntro] = useState(true);
 
   useEffect(() => {
     const handleStorageStatus = (event) => setStorageError(event.detail);
@@ -55,28 +54,8 @@ export default function Layout() {
     };
   }, [pathname]);
 
-  useEffect(() => {
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-
-    const timeoutId = window.setTimeout(() => setShowIntro(false), 1700);
-    return () => window.clearTimeout(timeoutId);
-  }, []);
-
   return (
     <>
-      {showIntro && (
-        <div className="intro-animation" aria-hidden="true">
-          <img className="intro-animation__image" src="/Cars/commerce.jpeg" alt="" />
-          <div className="intro-animation__content">
-            <span className="intro-animation__eyebrow">ELITE AUTOMOTIVE</span>
-            <div className="intro-animation__brand">النخبة<b>.</b>للسيارات</div>
-            <p>سيارتك المناسبة، أقرب مما تتخيل</p>
-            <span className="intro-animation__progress">
-              <span />
-            </span>
-          </div>
-        </div>
-      )}
       <header>
         <div className="wrap nav">
           <Link to="/" className="logo">النخبة<b>.</b>للسيارات</Link>

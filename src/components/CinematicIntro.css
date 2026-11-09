@@ -1,0 +1,256 @@
+.cinematic-intro {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  overflow: hidden;
+  background: #020203;
+  color: #fff;
+  isolation: isolate;
+  animation: cinematic-intro-out 0.42s ease-in 3.58s forwards;
+}
+
+.cinematic-intro__atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 70%, rgb(91 9 18 / 22%), transparent 48%),
+    linear-gradient(180deg, #020203 5%, #08080b 55%, #020203 100%);
+  opacity: 0;
+  animation: cinematic-atmosphere 2.7s ease-out 0.25s forwards;
+}
+
+.cinematic-intro__brand {
+  position: absolute;
+  z-index: 2;
+  top: 12%;
+  left: 50%;
+  display: flex;
+  align-items: center;
+  gap: 0.22em;
+  color: #f7f7f8;
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.25;
+  white-space: nowrap;
+  text-shadow: 0 0 28px rgb(255 255 255 / 28%), 0 4px 28px #000;
+  opacity: 0;
+  transform: translate(-50%, 12px);
+  animation: cinematic-brand-reveal 0.9s cubic-bezier(.2, .75, .2, 1) 0.3s forwards;
+}
+
+.cinematic-intro__brand i {
+  width: 0.12em;
+  height: 0.12em;
+  border-radius: 50%;
+  background: #e11d2e;
+  box-shadow: 0 0 18px 5px rgb(225 29 46 / 70%);
+}
+
+.cinematic-intro__tagline {
+  position: absolute;
+  z-index: 2;
+  top: calc(12% + clamp(3rem, 8vw, 5.7rem));
+  left: 50%;
+  color: rgb(255 255 255 / 63%);
+  font-size: clamp(.8rem, 1.8vw, 1rem);
+  letter-spacing: .12em;
+  white-space: nowrap;
+  opacity: 0;
+  transform: translate(-50%, 8px);
+  animation: cinematic-brand-reveal 0.7s ease 0.65s forwards;
+}
+
+.cinematic-intro__ring {
+  position: absolute;
+  z-index: 1;
+  top: 52%;
+  left: 50%;
+  width: clamp(190px, 34vw, 360px);
+  aspect-ratio: 1;
+  border: 1px solid rgb(255 255 255 / 13%);
+  border-radius: 50%;
+  box-shadow: 0 0 55px rgb(225 29 46 / 12%), inset 0 0 42px rgb(225 29 46 / 8%);
+  opacity: 0;
+  transform: translate(-50%, -50%);
+  animation: cinematic-ring-reveal .6s ease .2s forwards;
+}
+
+.cinematic-intro__ring::before,
+.cinematic-intro__ring::after {
+  position: absolute;
+  inset: -2px;
+  border: 2px solid transparent;
+  border-radius: inherit;
+  content: "";
+}
+
+.cinematic-intro__ring::before {
+  border-top-color: #ff4050;
+  border-right-color: rgb(225 29 46 / 72%);
+  box-shadow: 0 0 15px rgb(225 29 46 / 55%);
+  animation: cinematic-ring-spin 3.8s linear infinite;
+}
+
+.cinematic-intro__ring::after {
+  inset: 12px;
+  border-bottom-color: rgb(255 255 255 / 22%);
+  border-left-color: rgb(225 29 46 / 35%);
+  animation: cinematic-ring-spin 3s linear infinite reverse;
+}
+
+.cinematic-intro__floor {
+  position: absolute;
+  z-index: 0;
+  right: -25%;
+  bottom: 8%;
+  left: -25%;
+  height: 18%;
+  border-top: 1px solid rgb(225 29 46 / 28%);
+  background: radial-gradient(ellipse at 50% 0, rgb(225 29 46 / 15%), transparent 68%);
+  opacity: 0;
+  transform: perspective(320px) rotateX(58deg);
+  transform-origin: top;
+  animation: cinematic-floor 1.1s ease-out 1.3s forwards;
+}
+
+.cinematic-intro__car {
+  position: absolute;
+  z-index: 2;
+  bottom: 10%;
+  left: 0;
+  width: min(920px, 100vw);
+  height: auto;
+  overflow: visible;
+  transform: translateX(-120vw);
+  animation: cinematic-car-pass 2.1s cubic-bezier(.55, .02, .38, 1) .85s both;
+}
+
+.cinematic-intro__car-drawing {
+  opacity: 1;
+  transform-origin: center;
+}
+
+.cinematic-intro__silhouette {
+  stroke-dasharray: none;
+  stroke-dashoffset: 0;
+}
+
+.cinematic-intro__wheel {
+  animation: cinematic-wheel-reveal .6s ease-out 1.4s both;
+}
+
+.cinematic-intro__wheel-spin {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: cinematic-wheel-spin .7s linear 1.45s 3;
+}
+
+.cinematic-intro__headlight,
+.cinematic-intro__headlight-beam {
+  opacity: .8;
+  animation: cinematic-headlights .65s ease-out 1.8s both;
+}
+
+.cinematic-intro__taillight {
+  animation: cinematic-taillight .6s ease-out 1.5s both;
+}
+
+.cinematic-intro__floor-glow {
+  position: absolute;
+  z-index: 2;
+  right: 9%;
+  bottom: 18%;
+  width: 34%;
+  height: 7%;
+  background: rgb(255 255 255 / 40%);
+  filter: blur(28px);
+  opacity: 0;
+  animation: cinematic-headlights .65s ease-out 1.8s both;
+}
+
+.cinematic-intro__skip {
+  position: absolute;
+  z-index: 5;
+  top: max(18px, env(safe-area-inset-top));
+  left: max(18px, env(safe-area-inset-left));
+  padding: 8px 15px;
+  border: 1px solid rgb(255 255 255 / 24%);
+  border-radius: 999px;
+  background: rgb(0 0 0 / 35%);
+  color: rgb(255 255 255 / 76%);
+  font: inherit;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: color .2s ease, border-color .2s ease;
+}
+
+.cinematic-intro__skip:hover {
+  border-color: rgb(255 255 255 / 65%);
+  color: #fff;
+}
+
+@keyframes cinematic-atmosphere {
+  to { opacity: 1; }
+}
+
+@keyframes cinematic-ring-reveal {
+  to { opacity: 1; }
+}
+
+@keyframes cinematic-ring-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes cinematic-wheel-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes cinematic-wheel-reveal {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes cinematic-headlights {
+  0% { opacity: 0; }
+  25% { opacity: .85; }
+  40% { opacity: .35; }
+  65%, 100% { opacity: .8; }
+}
+
+@keyframes cinematic-taillight {
+  from { opacity: .1; }
+  to { opacity: 1; }
+}
+
+@keyframes cinematic-floor {
+  to { opacity: 1; }
+}
+
+@keyframes cinematic-brand-reveal {
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+@keyframes cinematic-car-pass {
+  0% { transform: translateX(-120vw) scale(.86); }
+  18% { opacity: 1; }
+  76% { opacity: 1; }
+  100% { transform: translateX(120vw) scale(1.05); opacity: 0; }
+}
+
+@keyframes cinematic-intro-out {
+  to { opacity: 0; visibility: hidden; }
+}
+
+@media (max-width: 600px) {
+  .cinematic-intro__brand { top: 14%; }
+  .cinematic-intro__tagline { top: calc(14% + 3.2rem); }
+  .cinematic-intro__car {
+    bottom: 20%;
+    width: 138vw;
+    max-width: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cinematic-intro { display: none; }
+}
