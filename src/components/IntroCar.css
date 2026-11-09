@@ -1,0 +1,101 @@
+.introcar {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #050507;
+  overflow: hidden;
+  transition: opacity 0.9s ease;
+}
+
+.introcar.is-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.introcar__canvas {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.7s ease;
+}
+
+.introcar__canvas canvas {
+  display: block;
+}
+
+/* الشاشة تضلم قبل ظهور الصفحة */
+.introcar.is-fade .introcar__canvas {
+  opacity: 0;
+}
+
+/* ---------- زر START فوق الكاوتش ---------- */
+.introcar__start {
+  position: absolute;
+  left: 0;
+  top: 0;
+  border: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: clamp(0.8rem, 1.5vw, 1.25rem);
+  letter-spacing: 0.08em;
+  background: radial-gradient(circle at 35% 30%, #ff4d5c, #e11d2e 55%, #8f0f1b);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.85),
+    0 0 24px rgba(225, 29, 46, 0.7);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+}
+
+.introcar__start.is-ready {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* حلقة نبض حوالين الزر */
+.introcar__start::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 77, 92, 0.9);
+  animation: startPulse 1.6s ease-out infinite;
+}
+
+@keyframes startPulse {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+/* ---------- زر التخطي ---------- */
+.introcar__skip {
+  position: absolute;
+  top: 18px;
+  left: 18px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.35);
+  color: rgba(255, 255, 255, 0.75);
+  font-family: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.introcar__skip:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .introcar {
+    display: none;
+  }
+}

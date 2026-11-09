@@ -1,0 +1,30 @@
+.car-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 10px 12px;
+  background: var(--panel);
+  border-top: 1px solid var(--line);
+}
+
+.car-actions button {
+  min-height: 36px;
+  padding: 6px 10px;
+  color: var(--text);
+  font-size: 0.85rem;
+  background: #101013;
+  border: 1px solid var(--line);
+  border-radius: 7px;
+  cursor: pointer;
+}
+
+.car-actions button:hover,
+.car-actions button[aria-pressed="true"] {
+  border-color: var(--accent);
+}
+
+.car-actions-message {
+  flex-basis: 100%;
+  color: var(--accent2);
+  font-size: 0.82rem;
+}
